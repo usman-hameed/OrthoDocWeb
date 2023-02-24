@@ -1,0 +1,79 @@
+import React from 'react';
+import {Link } from 'react-router-dom';
+import { FaAngleRight } from "react-icons/fa";
+import image1 from "../images/doctor.png";
+import image2 from "../images/patient.png";
+import image3 from "../images/admin.png";
+import bgImage from "../images/bg.jpg";
+function MainScreen(){ 
+  (function(d, m){
+    var kommunicateSettings = 
+        {"appId":"2619bed7d6a08379be3feac68d8a78197","popupWidget":true,"automaticChatOpenOnNavigation":true, "restartConversationByUser" : true,"hidePostCTA":true,"onInit" : function() {
+          var css = ".chat-popup-widget-text{color:red!important; .chat-popup-widget-text{font-weight:'bold'!important; }"
+          window.Kommunicate.customizeWidgetCss(css);
+          //var css1 = ".mck-box-title{font-family: 'Arial, Helvetica, sans-serif' !important;} .mck-box div{font-family: 'Arial, Helvetica, sans-serif' !important;}"; 
+          //window.Kommunicate.customizeWidgetCss(css1);
+          var css2 = ".mck-box div{font-size: 22px !important;}"; 
+          window.Kommunicate.customizeWidgetCss(css2);
+          
+          var style = document.createElement('style'); 
+          var classSettings = ".change-kommunicate-iframe-height{height:80%!important;width: 590px!important;box-shadow: rgba(0, 0, 0, 0.3) 0px 1.5rem 2rem!important;max-height:calc(100% - 30px) !important; }"; 
+          style.type = 'text/css'; 
+          style.innerHTML = classSettings; 
+          document.getElementsByTagName('head')[0].appendChild(style); 
+          window.KommunicateGlobal.document.getElementById('mck-sidebox-launcher').addEventListener('click',function(){ var testClick = document.getElementById("kommunicate-widget-iframe"); testClick.classList.add("change-kommunicate-iframe-height"); }); 
+          window.KommunicateGlobal.document.getElementById('km-chat-widget-close-button').addEventListener('click',function(){ var testClick =document.getElementById("kommunicate-widget-iframe"); testClick.classList.remove("change-kommunicate-iframe-height"); }); 
+        }};
+    var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+    s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+    var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+    window.kommunicate = m; m._globals = kommunicateSettings;
+})(document, window.kommunicate || {});
+  return(<>  
+  
+     <div
+        className="bg_image"
+        style={{
+          backgroundImage: 'url('+bgImage+')',
+          backgroundSize: "cover",
+         height: "170vh",
+          width:"207.35vh",
+          marginLeft:-300,
+          marginTop:-50,
+          opacity:30      
+        }}
+      >
+    <div className='main-heading'>Welcome to ORTHODOC!</div>
+    <div className='content'>This project intends to help the patients mainly to make them at ease. Patients usually find it troublesome to approach the nearby doctors in time and get medical assistance in emergency. Not only this but booking an appointment manually also makes it frustrating for the individuals. 
+Therefore, our project is confined to assist the patients by helping them book the appointment online. This way the system will reduce the wait time for other patients by helping multiple individuals at the same time. This means that more than one patient can book their appointment together irrespective of the manual appointment system in which patients have to wait for so long to register themselves.
+<br></br>Firstly, this project will aid the patients to detect their osteoarthritis disease at home by uploading X-Rays minimizing the patient’s effort to go to the doctor and do everything manually.
+<br></br>Secondly, all these operations can be performed when patient will create his/her profile to access the features of system. After creating an account, the patient will also be able to edit his/her profile, search for the doctors and book an appointment. <br></br>Thirdly, he/she will be capable of uploading his/her x-rays to the system to detect the osteoarthritis disease.
+Next, the patients will also be able to communicate with doctor through live chat. Not only this but the individuals will get basic level emergency assistance from chatbot too.<br></br> Last but not the least, the patient can give feedback about the doctor’s treatment, assisting the other patients to make the decision about the doctor easily.
+<br></br>On the other hand, talking about the manual system, it is similarly exhausting for the doctors to keep the patients' records safe so that they are not easily misplaced. Not only this but the modifications in patient’s records also take a lot of time.
+Along with serving the patient, our project also aims to help doctors by providing them with a platform where they can manage the patients' records in an automated way. As far as the record of the patients is concerned, it includes the visited history of patient, reports and prescription generated by system.<br></br> Lastly, Doctor can create, and modify his/her profile, upload X-Ray image of patient, generate report and create prescription for patient.
+</div>
+  <div className='patient-profile'>
+  <img src={image2} alt="loading..."  style={{width:250 ,height:250, marginLeft:120, marginTop:60, borderRadius:180}} />
+          <Link to='/login'> 
+          <button type="submit" className="patient-button">
+            Login As Patient <FaAngleRight style={{marginLeft:10,height:30}}/>
+          </button> </Link>
+  </div>
+  <div className='doctor-profile'>
+  <img src={image1} alt="loading..."  style={{width:250 ,height:250, marginLeft:120, marginTop:60, borderRadius:180}} />
+          <Link to='/doctorLogin'>  
+          <button type="submit" className="doctor-button">
+            Login As Doctor <FaAngleRight style={{marginLeft:10,height:30}}/>
+          </button> </Link>
+  </div>
+  <div className='admin-profile'>
+  <img src={image3} alt="loading..."  style={{width:250 ,height:250, marginLeft:120, marginTop:60, borderRadius:180}} />
+          <Link to='/adminLogin'>  
+          <button type="submit" className="admin-button">
+            Login As Admin <FaAngleRight style={{marginLeft:10,height:30}}/>
+          </button> </Link>
+
+  </div><div className='footerr'> <h4> ®ORTHODOC </h4></div></div>
+  </>
+)}
+export default MainScreen
